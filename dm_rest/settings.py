@@ -37,13 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'rest_framework',
     'rest_framework.authtoken',
+
     'ckeditor',
     'ckeditor_uploader',
+
     'django_filters',
+
     'djoser',
     'drf_yasg',
+    
+    'oauth2_provider',
+    'social_django',
+    'rest_framework_social_oauth2',
 
 
 
@@ -218,6 +226,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework_social_oauth2.authentication.SocialAuthentication',
     ),
 }
 
@@ -259,3 +269,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'claytemateam@gmail.com'
 EMAIL_HOST_PASSWORD = 'dujtneryirlqvdfd'
+
+SOCIAL_AUTH_VK_OAUTH_KEY = '7716893'
+SOCIAL_AUTH_VK_OAUTH_SECRET = 'gsymGmTGnvij4txiLkuj'
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.vk.VKOAuth2',
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
